@@ -1,3 +1,14 @@
 html, body {
-  font-family: "Lato", "Noto Sans TC", sans-serif;
+	font-family: 'Lato', 'Noto Sans TC', sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #333333;
+	background-color: #f6f7f8;
+}
+
+header {
+  height: 60px;
+  color: #666666;
+  /* box-shadow: 水平移動像素, 垂直移動像素, 模糊程度, 向外延伸擴展, RGB+透明度設定(alpha值) */
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.8); 
 }
