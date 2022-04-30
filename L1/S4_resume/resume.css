@@ -60,3 +60,41 @@ section {
 p {
 	color: #666666;
 }
+
+/* personal info */
+.avatar {
+  text-align: center; /* 內容置中 */
+}
+
+.avtar-img {
+  border-radius: 50%; /* 圓框效果 */
+}
+
+.name {
+  text-align: center; /* 內容置中 */
+  font-style: 32px;
+  margin: 20px 0;
+}
+
+.social-media {
+  text-align: center; /* 內容置中 */
+  margin-bottom: 20px; /* 下方邊距 */
+}
+
+.social-media-link {
+  color: #999999;         /* 文字顏色 */
+  text-decoration: none;  /* 沒有底線 */
+  margin: 0 5px;          /* 圖示間隔 */
+}
+
+.social-media-link:hover { /* 滑鼠移過時啟用這組設定 */
+  color: #ff6600;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: 14px;
+  letter-spacing: 2px;
+  color: #ff6600;
+}
