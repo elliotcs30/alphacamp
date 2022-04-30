@@ -12,3 +12,8 @@ header {
   /* box-shadow: 水平移動像素, 垂直移動像素, 模糊程度, 向外延伸擴展, RGB+透明度設定(alpha值) */
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.8); 
 }
+
+nav {
+  max-width: 820px;
+  margin: 0 auto;
+}
