@@ -35,7 +35,7 @@ nav {
 
 /* 置中對齊 */
 main {
-	outline: 3px solid tomato; /* 暫時觀察用 */
+	/* outline: 3px solid tomato; 暫時觀察用 */
 	max-width: 780px;          /* 限制最大寬度 */
 	margin: 0 auto;            /* 容器水平置中 */
 	padding: 40px 20px;        /* 留白 */
@@ -97,4 +97,39 @@ p {
   font-style: 14px;
   letter-spacing: 2px;
   color: #ff6600;
+}
+
+/* skill section */
+.skills {
+  /* outline: 3px solid tomato; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill {
+  /* outline: 2px solid steelblue; */
+  width: 30%; /* 每組文字佔用容器寬度 30% */
+}
+
+.skill-name {
+  border-top: 1px solid #999999; /* 為質感加一個上框線 */
+  padding-top: 16px; /* 上框線與文字之間留白 */
+}
+
+/* Expenience Section */
+hr {
+  border: 0px;
+  height: 1px;
+  background: #cccccc;
+  margin: 20px 0;
+}
+
+.company, .duration {
+  color: #666666;
+  font-style: 12px;
+  margin-right: 20px;
+}
+
+.fa-building, .fa-calendar-alt {
+  margin-right: 5px; /* 圖示與文字間隔 (小) */
 }
