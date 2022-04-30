@@ -15,20 +15,48 @@ header {
 
 nav {
   /*   outline: 3px solid tomato; */
-    max-width: 820px;
-    margin: 0 auto;
-    height: 100%;
-    padding: 0 20px;
-    display: flex;        /* 把容器變成 flex 容器 */
-    align-items: center;  /* 垂直置中 */
-    justify-content: space-between; /* 水平分散 */
-  }
+  max-width: 820px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;        /* 把容器變成 flex 容器 */
+  align-items: center;  /* 垂直置中 */
+  justify-content: space-between; /* 水平分散 */
+}
   
-  .nav-title {
-    font-weight: bold;   /* 粗體 */
-    letter-spacing: 1px; /* 字元間距 */
-  }
+.nav-title {
+  font-weight: bold;   /* 粗體 */
+  letter-spacing: 1px; /* 字元間距 */
+}
   
-  .nav-link {
-    color: #666666;      /* 覆蓋超連結的預設藍色 */
-  }
+.nav-link {
+  color: #666666;      /* 覆蓋超連結的預設藍色 */
+}
+
+/* 置中對齊 */
+main {
+	outline: 3px solid tomato; /* 暫時觀察用 */
+	max-width: 780px;          /* 限制最大寬度 */
+	margin: 0 auto;            /* 容器水平置中 */
+	padding: 40px 20px;        /* 留白 */
+}
+
+/* 設定共用屬性 */
+h2 {
+	font-size: 32px;
+	margin: 24px 0 8px;
+}
+
+h3 {
+	font-size: 21px;
+  margin: 0 0 8px;
+	font-weight: 500; /* 字體粗細 */
+}
+
+section {
+	margin-bottom: 48px;
+}
+
+p {
+	color: #666666;
+}
