@@ -1,0 +1,27 @@
+main {
+  margin: 25px;
+}
+
+.showUserDatas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px 20px;
+}
+
+.showUserDatas>div {
+  margin: 5px;
+  border: 2px solid #ccc;
+}
+
+.user-name {
+  margin: 5px 10px;
+}
+
+.avatar {
+  text-align: center;
+}
+
+.email {
+  text-align: center;
+}
