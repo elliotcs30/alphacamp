@@ -5,6 +5,8 @@ const POSTER_URL = BASE_URL + '/posters/'
 const movies = []
 
 const dataPanel = document.querySelector('#data-panel')
+const searchForm = document.querySelector('#search-form')
+const searchInput = document.querySelector('#search-input')
 
 function renderMovieList(data) {
   let rawHTML = ''
@@ -52,6 +54,39 @@ dataPanel.addEventListener('click', function onPanelClicked(event) {
   if (event.target.matches('.btn-show-movie')) {
     showMovieModal(Number(event.target.dataset.bsId))
   }
+})
+
+searchForm.addEventListener('submit', function onSearchFormSubmitted(event) {
+  // cancel prevent default action
+  event.preventDefault()
+  // get search keyword 
+  const keyword = searchInput.value.trim().toLowerCase()
+  // save filter movies 
+  let filteredMovies = []
+
+  // fail processing: input fail valid string
+  if (!keyword.length) {
+    return window.alert('Please enter a valid string')
+  }
+
+  // filter movies
+  // map, filter, reduce
+  filteredMovies = movies.filter((movie) => {
+    movie.title.toLowerCase().includes(keyword)
+  })
+
+  // reset render movies
+  if (filteredMovies.length === 0) {
+    return window.alert('Cannot find movies with keyword: ' + keyword)
+  }
+
+  // for (const movie of movies) {
+  //   if (movie.title.toLowerCase().includes(keyword)) {
+  //     filteredMovies.push(movie)
+  //   }
+  // }
+
+  renderMovieList(filteredMovies)
 })
 
 axios
