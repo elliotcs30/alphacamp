@@ -1,0 +1,32 @@
+#cards {
+  /* 軸 - row(預設) */
+  display: flex;
+}
+
+.card {
+  /* 卡片在容器裡的排版 */
+  /* flex-basis: 100/3 = 7(所佔的比例單位), flex-grow: 若有剩餘的空間要不要填滿, flex-shrink: 若當前收縮的空間不夠, 要不要收縮 */
+  flex: 7% 0 1; /* 每個 item 分配容器寬度 */
+  height: 8vw;  /* 依視窗的寬度等比例變化 */
+  border: 2px solid #e0e0e0;
+
+  /* 卡片內部元素的排版 */
+  display: flex;
+  /* main axis */
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+}
+
+.card p {
+  margin: 3px;
+  font-size: 10px;
+}
+
+.card p:last-child {
+  transform: rotate(180deg);
+}
