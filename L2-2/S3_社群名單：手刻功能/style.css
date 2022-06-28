@@ -1,0 +1,10 @@
+.driver-modal-image {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.driver-image {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
