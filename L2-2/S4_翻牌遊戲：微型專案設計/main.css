@@ -88,3 +88,26 @@
     border: 2px solid #ffd54f;
   }
 }
+
+/* Game finished */
+.completed {
+  z-index: 999;
+  position: absolute;
+  top: 33vh;
+  width: 100vw;
+  padding: 50px 0;
+  background-color: RGBA(232, 246, 254, 0.8);
+}
+
+.completed > p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
