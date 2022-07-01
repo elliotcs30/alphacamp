@@ -1,3 +1,11 @@
+const GAME_STATE = {
+  FirstCardAwaits: 'FirstCardAwaits',
+  SecondCardAwaits: 'SecondCardAwaits',
+  CardsMatchFailed: 'CardsMatchFailed',
+  CardsMatched: 'CardsMatched',
+  GameFinished: 'GameFinished'
+}
+
 const Symbols = [
   'https://assets-lighthouse.alphacamp.co/uploads/image/file/17989/__.png', // 黑桃
   'https://assets-lighthouse.alphacamp.co/uploads/image/file/17992/heart.png', // 愛心
@@ -24,6 +32,7 @@ const view = {
         return number
     }
   },
+
   getCardContent(index) {
     const number = this.transformNumber((index % 13) + 1)
     const symbol = Symbols[Math.floor(index / 13)]
@@ -33,13 +42,16 @@ const view = {
       <img src="${symbol}" />
       <p>${number}</p>`
   },
+
   getCardElement(index) {
     return `<div data-index="${index}" class="card back"></div>`
   },
-  displayCards() {
+
+  displayCards(indexs) {
     const rootElement = document.querySelector('#cards')
-    rootElement.innerHTML = utility.getRandomNumberArray(52).map(index => this.getCardElement(index)).join('')
+    rootElement.innerHTML = indexs.map(index => this.getCardElement(index)).join('')
   },
+
   flipCard(card) {
     // 如果是背面, 回傳正面
     if (card.classList.contains('back')) {
@@ -66,12 +78,47 @@ const utility = {
   }
 }
 
-view.displayCards()
+const model = {
+  revealedCards: [],
+}
+
+const controller = {
+  currentState: GAME_STATE.FirstCardAwaits,
+
+  generateCards() {
+    view.displayCards(utility.getRandomNumberArray(52))
+  },
+
+  // 依照不同的遊戲狀態，做不同的行為
+  dispatchCardAction(card) {
+    if (!card.classList.contains('back')) {
+      return
+    }
+
+    switch (this.currentState) {
+      case GAME_STATE.FirstCardAwaits:
+        view.flipCard(card)
+        model.revealedCards.push(card)
+        this.currentState = GAME_STATE.SecondCardAwaits
+        break
+      case GAME_STATE.SecondCardAwaits:
+        view.flipCard(card)
+        model.revealedCards.push(card)
+        // 判斷配對是否成功
+        break
+    }
+
+    console.log('this.currentState', this.currentState)
+    console.log('revealedCards', model.revealedCards.map(card => card.dataset.index))
+  }
+}
+
+controller.generateCards()
 
 // Node List (array-like), 
 // array-like 並不是真的 array, 因此不能用map, 所以用 forEach 來迭代
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', (event) => {
-    view.flipCard(card)
+    controller.dispatchCardAction(card)
   })
 })
