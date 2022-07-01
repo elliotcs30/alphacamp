@@ -76,3 +76,15 @@
 #header .tried {
   margin-top: 0;
 }
+
+.wrong {
+  animation: wrongAnimation 0.2s; /* 每次播 0.2 秒 */
+  animation-iteration-count: 5;  /* 播放 5 次*/
+}
+
+@keyframes wrongAnimation {
+  /* 當動畫發生時，該元素要逐漸加上黃色邊框 */
+  to {
+    border: 2px solid #ffd54f;
+  }
+}

@@ -71,7 +71,27 @@ const view = {
     cards.map(card => {
       card.classList.add('paired')
     })
+  },
+
+  renderScore(score) {
+    document.querySelector('.score').textContent = `Score: ${score}`
+  },
+
+  renderTriedTimes(times) {
+    document.querySelector('.tried').textContent = `You've tried: ${times} times`
+  },
+
+  appendWrongAnimation(...cards) {
+    cards.map(card => {
+      card.classList.add('wrong')
+      card.addEventListener('animationend', (event) => {
+        card.classList.remove('wrong')
+      }, {
+        once: true
+      })
+    })
   }
+
 }
 
 const utility = {
@@ -91,7 +111,10 @@ const model = {
 
   isRevealedCardsMatched() {
     return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
-  }
+  },
+
+  score: 0,
+  triedTimes: 0,
 }
 
 const controller = {
@@ -114,12 +137,15 @@ const controller = {
         this.currentState = GAME_STATE.SecondCardAwaits
         break
       case GAME_STATE.SecondCardAwaits:
+        view.renderTriedTimes((++model.triedTimes))
+
         view.flipCards(card)
         model.revealedCards.push(card)
 
         // 判斷配對是否成功
         if (model.isRevealedCardsMatched()) {
           // 配對正確
+          view.renderScore((model.score += 10))
           this.currentState = GAME_STATE.CardsMatched
           view.pairCards(...model.revealedCards)
           model.revealedCards = []
@@ -127,6 +153,7 @@ const controller = {
         } else {
           // 配對失敗
           this.currentState = GAME_STATE.CardsMatchFailed
+          view.appendWrongAnimation(...model.revealedCards)
           setTimeout(this.resetCards, 1000)}
         break
     }
